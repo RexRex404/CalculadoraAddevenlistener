@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="display">
+      <!--
+        readonly: evita que el usuario escriba directamente en el input con el teclado.
+        Solo se puede modificar desde JavaScript. Así controlamos todo lo que aparece
+        en pantalla y evitamos entradas inesperadas.
+      -->
+      <input type="text" id="resultado" readonly value="0" />
+    </div>
+
+    <div class="botones">
+      <!-- Fila 1 -->
+      <button class="operador" id="btn-c">C</button>
+      <button class="operador" id="btn-back">←</button>
+      <button class="operador" id="btn-pct">%</button>
+      <button class="operador" id="btn-div">÷</button>
+
+      <!-- Fila 2 -->
+      <button class="numero" id="btn-7">7</button>
+      <button class="numero" id="btn-8">8</button>
+      <button class="numero" id="btn-9">9</button>
+      <button class="operador" id="btn-mul">×</button>
+
+      <!-- Fila 3 -->
+      <button class="numero" id="btn-4">4</button>
+      <button class="numero" id="btn-5">5</button>
+      <button class="numero" id="btn-6">6</button>
+      <button class="operador" id="btn-sub">−</button>
+
+      <!-- Fila 4 -->
+      <button class="numero" id="btn-1">1</button>
+      <button class="numero" id="btn-2">2</button>
+      <button class="numero" id="btn-3">3</button>
+      <button class="operador" id="btn-add">+</button>
+
+      <!-- Fila 5 -->
+      <button class="numero" id="btn-00">00</button>
+      <button class="numero" id="btn-0">0</button>
+      <button class="numero" id="btn-dot">.</button>
+      <button class="operador" id="btn-eq">=</button>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

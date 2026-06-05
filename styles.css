@@ -1,0 +1,200 @@
+/* =========================================
+   CALCULADORA — styles.css
+   Estética: Glassmorphism oscuro con acento neón
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;700&display=swap');
+
+/* ── Variables de diseño ── */
+:root {
+  --bg-page:        #0d0f14;
+  --bg-card:        rgba(255, 255, 255, 0.05);
+  --border-card:    rgba(255, 255, 255, 0.10);
+  --display-bg:     rgba(0, 0, 0, 0.45);
+  --display-text:   #e8f4ff;
+  --btn-num-bg:     rgba(255, 255, 255, 0.07);
+  --btn-num-hover:  rgba(255, 255, 255, 0.14);
+  --btn-num-active: rgba(255, 255, 255, 0.22);
+  --btn-op-bg:      rgba(99, 179, 255, 0.15);
+  --btn-op-hover:   rgba(99, 179, 255, 0.28);
+  --btn-op-active:  rgba(99, 179, 255, 0.45);
+  --btn-eq-bg:      #3b82f6;
+  --btn-eq-hover:   #60a5fa;
+  --btn-eq-active:  #2563eb;
+  --btn-c-bg:       rgba(239, 68, 68, 0.20);
+  --btn-c-hover:    rgba(239, 68, 68, 0.38);
+  --neon-glow:      0 0 18px rgba(59, 130, 246, 0.55);
+  --radius:         16px;
+  --radius-btn:     12px;
+  --font-display:   'Share Tech Mono', monospace;
+  --font-ui:        'Syne', sans-serif;
+}
+
+/* ── Reset base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Fondo de página ── */
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-page);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(59,130,246,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 80% 110%, rgba(139,92,246,0.12) 0%, transparent 60%);
+  font-family: var(--font-ui);
+}
+
+/* ── Tarjeta principal ── */
+.container {
+  width: 340px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius);
+  padding: 24px 20px 20px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    0 8px 40px rgba(0,0,0,0.60),
+    0 0 0 1px rgba(255,255,255,0.04) inset;
+}
+
+/* ── Display ── */
+.display {
+  background: var(--display-bg);
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 10px 14px;
+  margin-bottom: 18px;
+  overflow: hidden;
+}
+
+.display input#resultado {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--display-text);
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  text-align: right;
+  letter-spacing: 1px;
+  cursor: default;
+  /* Ocultar caret aunque sea readonly, por estética */
+  caret-color: transparent;
+}
+
+/* ── Grid de botones ── */
+.botones {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+/* ── Botón base ── */
+button {
+  font-family: var(--font-ui);
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 18px 0;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    transform  0.10s ease,
+    box-shadow 0.15s ease;
+  user-select: none;
+  letter-spacing: 0.5px;
+}
+
+/* ── Números ── */
+button.numero {
+  background: var(--btn-num-bg);
+  color: #f0f4ff;
+}
+
+button.numero:hover {
+  background: var(--btn-num-hover);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.30);
+}
+
+button.numero:active {
+  background: var(--btn-num-active);
+  transform: scale(0.94);
+}
+
+/* ── Operadores ── */
+button.operador {
+  background: var(--btn-op-bg);
+  color: #93c5fd;
+}
+
+button.operador:hover {
+  background: var(--btn-op-hover);
+  box-shadow: 0 4px 14px rgba(99,179,255,0.20);
+}
+
+button.operador:active {
+  background: var(--btn-op-active);
+  transform: scale(0.94);
+}
+
+/* ── Botón C (limpiar) ── */
+button#btn-c {
+  background: var(--btn-c-bg);
+  color: #fca5a5;
+  border-color: rgba(239,68,68,0.15);
+}
+
+button#btn-c:hover {
+  background: var(--btn-c-hover);
+  box-shadow: 0 4px 14px rgba(239,68,68,0.20);
+}
+
+button#btn-c:active {
+  transform: scale(0.94);
+}
+
+/* ── Botón = (igual) ── */
+button#btn-eq {
+  background: var(--btn-eq-bg);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: var(--neon-glow);
+}
+
+button#btn-eq:hover {
+  background: var(--btn-eq-hover);
+  box-shadow: 0 0 26px rgba(59,130,246,0.75);
+}
+
+button#btn-eq:active {
+  background: var(--btn-eq-active);
+  transform: scale(0.94);
+  box-shadow: none;
+}
+
+/* ── Animación de resultado ── */
+.display input.resultado-ok {
+  animation: flash-ok 0.35s ease;
+}
+
+.display input.resultado-err {
+  animation: flash-err 0.35s ease;
+}
+
+@keyframes flash-ok {
+  0%   { color: #86efac; }
+  100% { color: var(--display-text); }
+}
+
+@keyframes flash-err {
+  0%   { color: #fca5a5; }
+  100% { color: var(--display-text); }
+}
